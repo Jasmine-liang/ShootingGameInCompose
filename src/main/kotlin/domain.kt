@@ -6,3 +6,4 @@ object Window {
 }
 
 val backgroundColor = Color(0x4527A0)
+val shipColor = Color(0xff8a2be2)

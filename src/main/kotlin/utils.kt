@@ -4,6 +4,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.IntSize
 
 
@@ -24,4 +25,8 @@ fun Preview(
             }
         }
     }
+}
+
+fun DrawScope.drawText(text: String){
+
 }
