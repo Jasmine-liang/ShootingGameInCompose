@@ -15,24 +15,27 @@ fun main() {
     Preview {
         val scene = remember { Scene() }
         scene.setupScene()
-        val frameState = StepFrame {
-            scene.update()
-        }
+        val frameState = StepFrame()
         scene.render(frameState)
     }
 }
 
 class Scene {
     private var sceneEntity = mutableStateListOf<SceneEntity>()
+    private var targets = mutableStateListOf<Target>()
 
     fun setupScene() {
         sceneEntity.clear()
+        repeat(8){
+            targets.add(Target())
+        }
     }
 
     fun update() {
         for (entity in sceneEntity) {
             entity.update(this)
         }
+
     }
 
     @OptIn(ExperimentalFoundationApi::class)
@@ -55,6 +58,11 @@ class Scene {
                         }
                     )
             ) {
+               for (target in targets){
+                   target.x = (0..size.width.toInt()).random().toFloat()
+                   target.y = 20f
+                   drawTarget(target)
+               }
                 val stepFrame = frameState.value
                 drawSpaceShip(mouseXY)
             }

@@ -1,17 +1,19 @@
 import androidx.compose.runtime.*
+import kotlinx.coroutines.delay
 
 @Composable
-fun StepFrame(callback: () -> Unit): State<Long>{
+fun StepFrame(): State<Long>{
     val millis = remember{ mutableStateOf(0L)}
-    LaunchedEffect(Unit){
+     LaunchedEffect(Unit){
         val startTime = withFrameNanos { it }
         while (true){
             withFrameMillis {
                 frameTime ->
                     millis.value = frameTime - startTime
             }
-            callback.invoke()
+            //callback.invoke()
         }
     }
+
     return millis
 }
