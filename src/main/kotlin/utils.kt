@@ -27,6 +27,11 @@ fun Preview(
     }
 }
 
-fun DrawScope.drawText(text: String){
-
+fun Float.mapRange(fromRange: Pair<Float, Float>, toRange: Pair<Float, Float>): Float {
+    val (minRange, maxRange) = fromRange
+    val (minMappedRange, maxMappedRange) = toRange
+    val rangePercentage = (this / maxRange) * 100
+    val mappedValue = (rangePercentage / 100) * (minMappedRange + maxMappedRange)
+    return mappedValue
 }
+
